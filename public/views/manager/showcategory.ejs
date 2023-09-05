@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Category</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;1,400;1,500&family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,400;0,700;1,400&family=Raleway:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,400;0,500;1,400;1,500&display=swap"
+    rel="stylesheet"
+  />
+    <style>
+      /* Reset some default styles */
+      body,
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      /* Add some spacing */
+      body {
+        padding: 20px;
+        background-color: rgb(198, 197, 197);
+      }
+
+      /* Style for the table */
+      .styled-table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 50px;
+        max-width: 900px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        margin: 90px auto;
+      }
+
+      .styled-table thead th {
+        background-color: #65a4ce;
+        color: #ffffff;
+        font-weight: bold;
+        padding: 10px 15px;
+        text-align: left;
+      }
+
+      .styled-table tbody td {
+        padding: 10px 15px;
+        border-bottom: 1px solid #dddddd;
+        color: #333;
+      }
+
+      .styled-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      /* Add hover effect */
+      .styled-table tbody tr:hover {
+        background-color: #f2f2f2;
+        transition: background-color 0.3s;
+      }
+      .editbtn {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: rgba(238, 174, 202, 1);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .editbtn:hover {
+      background-color: #5188a0;
+      transform: scale(1.05);
+    }
+    .productbtn{
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: rgba(148,233,148,1);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .showproductbtn{
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: rgba(148,233,148,1);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+    .showproductbtn:hover {
+      background-color: #5188a0;
+      transform: scale(1.05);
+    }
+    .productbtn:hover {
+      background-color: rgba(238, 174, 202, 1);
+      transform: scale(1.05);
+    }
+    .button {
+      display: inline-block;
+      padding: 8px 16px;
+      float: right;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+      margin: 5px;
+    }
+
+    /* Style for the "Add Category" button */
+    .addbtn {
+      background-color: rgb(187, 147, 147);
+      color: #ffffff;
+    }
+
+    .addbtn:hover {
+      background-color: #5188a0;
+      transform: scale(1.05);
+    }
+
+    /* Style for the "Back" button */
+    .backbtn {
+      background-color: rgba(148, 233, 148, 1);
+      color: #ffffff;
+    }
+
+    .backbtn:hover {
+     
+      transform: scale(1.05);
+    }
+    </style>
+  </head>
+  <body>
+   
+
+    <a href="/managercreatecategory" class="button addbtn">Add Category</a>
+    <a href="/managerpanel" class="button backbtn">Back</a>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Sr.No</th>
+          <th>Categories</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% categories.forEach((category, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td><%= category.name %></td>
+              <td>
+                <a href="/editCategory/<%= category._id %>" class="editbtn">Edit</a>
+            <a href="/managercreateproduct?category=<%= category._id %>" class="productbtn"> Add Product</a>
+            <a href="/showmanagerproduct?category=<%= category._id %>" class="showproductbtn">Show Products</a>
+              </td>
+            </tr>
+          <% }); %>
+    </tbody>
+    
+    </table>
+  </body>
+</html>
